@@ -46,9 +46,11 @@ int main(int argc, char ** argv) {
     std::cout << doc1.DebugString() << std::endl;
     std::cout << doc2.DebugString() << std::endl;
 
-    ColumnWriter test_writer;
+    ColumnWriter test_writer(NULL, 0, NULL, 0, 0);
     dissect_record(doc1, test_writer);
     dissect_record(doc2, test_writer);
-    std::cout << test_writer.DebugString() << std::endl;
+    test_writer.Finalize();
+    test_writer.Dump();
+    //std::cout << test_writer.DebugString() << std::endl;
 
 }
